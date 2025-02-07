@@ -27,25 +27,15 @@ export const registerUser = async (req, res) => {
     return res.status(400).json({ message: "User already exists" });
   }
   try {
-    // Check if user already exists
-
-    // Create a new user
-    const userData = {
+    const newUser = await User.create({
       name,
       email,
       password,
-    };
-
-    const newUser = await User.create(userData);
-    const user = await newUser.save();
-
-    const token = jwt.sign({ id: user._id }, process.env.JWT_TOKEN_SECRET, {
-      expiresIn: "1d",
     });
 
     res.json({
       success: true,
-      token,
+      newUser,
       message: "User registerd successfully",
     });
   } catch (err) {

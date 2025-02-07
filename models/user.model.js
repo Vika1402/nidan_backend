@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 
 const Schema = mongoose.Schema;
 
@@ -26,7 +26,7 @@ const userSchema = new Schema({
     required: true,
   },
   address: {
-    line1: { type: String, required: true },
+    line1: { type: String },
     line2: { type: String },
   },
   gender: {
