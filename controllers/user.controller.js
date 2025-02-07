@@ -1,4 +1,4 @@
-import bcrypt from 'bcryptjs';
+import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import validator from "validator";
 import { User } from "../models/user.model.js";
@@ -183,7 +183,9 @@ export const bookAppointment = async (req, res) => {
     // Fetch user details
     const userData = await User.findById(userId);
     if (!userData) {
-      return res.status(404).json({ success: false, message: "User not found" });
+      return res
+        .status(404)
+        .json({ success: false, message: "User not found" });
     }
 
     // Create the appointment
@@ -207,7 +209,6 @@ export const bookAppointment = async (req, res) => {
     res.status(500).json({ success: false, message: "Server error" });
   }
 };
-
 
 // Get user appointments
 export const getUserAppointments = async (req, res) => {
